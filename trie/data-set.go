@@ -72,3 +72,7 @@ func (d *DataSet) Detection(userAgent string) (*fd.DeviceInfo, error) {
 
 	return fd.ParseDeviceInfo(buff[:length])
 }
+
+func (d *DataSet) Close() {
+	C.fiftyoneDegreesDataSetFree(d.cDataSet)
+}
