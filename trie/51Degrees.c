@@ -998,7 +998,7 @@ int getPropertyCountFromFile(const char* fileName) {
 
 	// Skip over the version.
 	fseek(inputFilePtr, sizeof(uint16_t), SEEK_SET);
-
+	
 	// Skip over the copyright.
 	if (fread(&size, sizeof(int32_t), 1, inputFilePtr) != 1)
 		return DATA_SET_INIT_STATUS_CORRUPT_DATA;

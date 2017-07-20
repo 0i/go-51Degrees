@@ -35,7 +35,7 @@
 
 #include <stdint.h>
 #ifndef FIFTYONEDEGREES_NO_THREADING
-#include "threading.h"
+#include "./threading.h"
 #endif
 
 #ifdef __cplusplus
@@ -282,7 +282,7 @@ EXTERNAL void fiftyoneDegreesFreeDeviceOffsets(fiftyoneDegreesDeviceOffsets* off
 * \ingroup FiftyOneDegreesFunctions
 * Creates a new device offsets structure with memory allocated and
 * increments the inUse counter in the provider so the dataset will
-* not be freed until this is. A corresponding call to
+* not be freed until this is. A corresponding call to 
 * fiftyoneDegreesProviderFreeDeviceOffsets must be made when these
 * offsets are finished with.
 * @param provider pointer to an initialised provider.
