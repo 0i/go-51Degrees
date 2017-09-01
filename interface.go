@@ -112,10 +112,6 @@ func ParseDeviceInfo(data []byte) (*DeviceInfo, error) {
 }
 
 func parseString(v string) *string {
-	if v == "Unknown" {
-		return nil
-	}
-
 	return &v
 }
 
