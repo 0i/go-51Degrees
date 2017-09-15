@@ -8,8 +8,12 @@ import (
 )
 
 func ParseDeviceInfo(data string) (*DeviceInfo, error) {
+	data = strings.Replace(data, `\t`, ` `, -1)
 	data = strings.Replace(data, `"Kindle Fire HD 7"",`, `"Kindle Fire HD 7",`, -1)
 	data = strings.Replace(data, `"Kindle Fire HD 7" (`, `"Kindle Fire HD 7 (`, -1)
+	data = strings.Replace(data, `"PIXI 4 5"",`, `"PIXI 4 5",`, -1)
+	data = strings.Replace(data, `"Pixi 4 5"",`, `"Pixi 4 5",`, -1)
+	data = strings.Replace(data, `"eSmart 7"",`, `"eSmart 7",`, -1)
 
 	json, err := simplejson.NewJson([]byte(data))
 	if err != nil {
