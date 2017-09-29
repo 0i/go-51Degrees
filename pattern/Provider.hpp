@@ -28,35 +28,34 @@
 #include <stdlib.h>
 #include <sstream>
 #include "Match.hpp"
+#include "Profiles.hpp"
 
 #ifndef FIFTYONEDEGREESPROVIDER_HPP
 #define FIFTYONEDEGREESPROVIDER_HPP
 
 using namespace std;
 
+#define FIFTYONEDEGREESPROVIDER_CACHE_SIZE 10000
+#define FIFTYONEDEGREESPROVIDER_POOL_SIZE 20
+
 /**
- * Encapsulates C based device detection functionality. The Provider is
- * responsible for loading and initialising the Trie data file, and creating
- * instances of Match classes based on User-Agents or HTTP Headers.
- *
- * When the Provider is destroyed the memory is freed. As Trie device detection
- * can only be initialised once one provider should be created per process.
- *
- * The Provider can be constructed with a cache to improve performance in
- * situations where requests will be repeated for the same User-Agent. The 
- * cache has a fixed size in memory and does not grow or shrink over time.
- *
- * A pool of worksets can be configured to recycle the memory allocated to a
- * previous detection match. In a multi threaded environment the pool size
- * should optimally be set to the number of concurrent threads the system
- * can support.
+ * Encapsulates the functionality provided by the C DataSet, Pool and Cache
+ * exposing services via a class model. The Provider is resonsible for loading
+ * data into memory, freeing memory when destroyed, managing the pool and cache
+ * and creating Match instances from User-Agent and HTTP header data. A single
+ * process can have multiple Providers and each is thread safe.
  */
 class Provider {
 
 	public:
 		Provider(const string &fileName);
 		Provider(const string &fileName, const string &propertyString);
+		Provider(const string &fileName, const string &propertyString,
+			int cacheSize, int poolSize);
 		Provider(const string &fileName, vector<string> &propertiesArray);
+		Provider(const string &fileName, vector<string> &propertiesArray,
+			int cacheSize, int poolSize);
+		Provider(const string &fileName, int cacheSize, int poolSize);
 
 		virtual ~Provider();
 
@@ -72,19 +71,7 @@ class Provider {
         Match* getMatch(const char *userAgent);
         Match* getMatch(const string &userAgent);
         Match* getMatch(const map<string, string> &headers);
-
-		Match* getMatchWithTolerances(
-			const char *userAgent, 
-			int drift, 
-			int difference);
-		Match* getMatchWithTolerances(
-			const string &userAgent, 
-			int drift, 
-			int difference);
-		Match* getMatchWithTolerances(
-			const map<string, string> &headers, 
-			int drift, 
-			int difference);
+        Match* getMatchForHttpHeaders(const map<string, string> &headers);
 
         map<string, vector<string> >& getMatchMap(const char *userAgent);
 		map<string, vector<string> >& getMatchMap(const string &userAgent);
@@ -95,44 +82,52 @@ class Provider {
         string getMatchJson(const string &userAgent);
         string getMatchJson(const map<string, string> &headers);
 
-		void setDrift(int drift);
-		void setDifference(int difference);
+		Match* getMatchForDeviceId(const char *deviceId);
+		Match* getMatchForDeviceId(const string &deviceId);
+
+		Profiles* findProfiles(const string &propertyName, const string &valueName);
+		Profiles* findProfiles(const char *propertyName, const char *valueName);
+		Profiles* findProfiles(const string &propertyName, const string &valueName, Profiles* profiles);
+		Profiles* findProfiles(const char *propertyName, const char *valueName, Profiles* profiles);
 
 		void reloadFromFile();
-		void reloadFromMemory(void *source, int length);
-		void reloadFromMemory(unsigned char source[], int length);
+		void reloadFromMemory(const char *source, int length);
+		void reloadFromMemory(const string &source, int length);
+
+		int getCacheHits();
+		int getCacheMisses();
+		int getCacheMaxIterations();
 
 		bool getIsThreadSafe();
 
 		Provider(const string &fileName, const string &propertyString,
-			bool validate);
+			int cacheSize, int poolSize, bool validate);
 
-	protected:
+protected:
 
 	private:
 		vector<string> httpHeaders;
 		vector<string> availableProperties;
 
-		void init(const string &fileName, const string &propertyString);
-		void init(const string &fileName, vector<string> &propertyString);
-		void init(const string &fileName);
+		void init(const string &fileName, const string &propertyString,
+			int cacheSize, int poolSize);
+		void init(const string &fileName, vector<string> &propertyString,
+			int cacheSize, int poolSize);
+		void init(const string &fileName, int cacheSize, int poolSize);
 		void initHttpHeaders();
 		void initAvailableproperties();
 		void initException(fiftyoneDegreesDataSetInitStatus initStatus,
 			const string &fileName);
+		void initMatch(Match *match);
 		void initComplete(fiftyoneDegreesDataSetInitStatus initStatus,
 			const string &fileName);
-		void buildArray(fiftyoneDegreesDeviceOffsets *offsets,
+		void buildArray(fiftyoneDegreesWorkset *ws,
 			map<string, vector<string> > *result);
-		void buildArray(int offset, map<string, vector<string> > *result);
-		fiftyoneDegreesDeviceOffsets* matchForHttpHeaders(
-			const map<string, string> *headers,
-			int drift,
-			int difference);
-		void initMatch(Match *match);
+		void matchForHttpHeaders(fiftyoneDegreesWorkset *ws,
+			const map<string, string> *headers);
 
 		int64_t initWithValidate(const string &fileName,
-			const string &properties);
+			const string &properties, int cacheSize, int poolSize);
 
 		fiftyoneDegreesProvider provider;
 };

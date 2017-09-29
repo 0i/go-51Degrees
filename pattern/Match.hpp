@@ -33,9 +33,11 @@ using namespace std;
 
 /**
  * Encapsulates the results of device detection for given target HTTP headers.
- * The class is constructed using an instance of device offsets which are then
- * referenced to return associated values and metrics. The memory used by the
- * offsets is released when the instance is destroyed.
+ * A Match instance uses a C workset struct which has been set using either a
+ * single User-Agent or a collection of HTTP headers. The workset is retained
+ * by the Match instance until it is destroyed and the workset returned to the
+ * pool held by the Provider. If a Match instance is not destroyed properly the
+ * system will lock when the workset pool is exhausted.
  *
  * Match instances can only be created by a Provider.
  *
@@ -46,8 +48,9 @@ class Match {
 	friend class Provider;
 
 public:
-	Match(fiftyoneDegreesDeviceOffsets *offsets);
+	Match();
 	virtual ~Match();
+
 
 	vector<string> getValues(const char *propertyName);
 	vector<string> getValues(string &propertyName);
@@ -62,16 +65,14 @@ public:
 	int getDifference();
 	int getMethod();
 	string getUserAgent();
-    
+
     // Manual dispose method for node.
     void close();
 
 protected:
 
 private:
-	fiftyoneDegreesDataSet *dataSet;
-	fiftyoneDegreesDeviceOffsets *offsets;
-	string userAgent;
+	fiftyoneDegreesWorkset *ws;
 };
 
 #endif // FIFTYONEDEGREESMATCH_HPP

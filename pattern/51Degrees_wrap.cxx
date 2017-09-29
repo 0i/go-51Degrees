@@ -8,9 +8,9 @@
  * interface file instead.
  * ----------------------------------------------------------------------------- */
 
-// source: src/trie/51Degrees.i
+// source: src/pattern/51Degrees.i
 
-#define SWIGMODULE FiftyOneDegreesTrieV3
+#define SWIGMODULE FiftyOneDegreesPatternV3
 
 #ifdef __cplusplus
 /* SwigValueWrapper is described in swig.swg */
@@ -241,16 +241,18 @@ static void Swig_free(void* p) {
 
 	#include "Provider.hpp"
 	#include "Match.hpp"
+	#include "Profiles.hpp"
 
 	#ifdef SWIGPHP
 	Provider *provider;
 
 	PHP_INI_BEGIN()
-	PHP_INI_ENTRY("FiftyOneDegreesTrieV3.data_file", "/usr/lib/php5/51Degrees.trie", PHP_INI_ALL, NULL)
-	PHP_INI_ENTRY("FiftyOneDegreesTrieV3.property_list", NULL, PHP_INI_ALL, NULL)
+	PHP_INI_ENTRY("FiftyOneDegreesPatternV3.data_file", "/usr/lib/php5/51Degrees.dat", PHP_INI_ALL, NULL)
+	PHP_INI_ENTRY("FiftyOneDegreesPatternV3.pool_size", "10", PHP_INI_ALL, NULL)
+	PHP_INI_ENTRY("FiftyOneDegreesPatternV3.cache_size", "10000", PHP_INI_ALL, NULL)
+	PHP_INI_ENTRY("FiftyOneDegreesPatternV3.property_list", NULL, PHP_INI_ALL, NULL)
 	PHP_INI_END()
 	#endif
-
 
 
 #include <string>
@@ -309,7 +311,7 @@ SWIGINTERN void std_vector_Sl_std_string_Sg__set(std::vector< std::string > *sel
 extern "C" {
 #endif
 
-void _wrap_Swig_free_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(void *_swig_go_0) {
+void _wrap_Swig_free_FiftyOneDegreesPatternV3_273bde300a844605(void *_swig_go_0) {
   void *arg1 = (void *) 0 ;
   
   arg1 = *(void **)&_swig_go_0; 
@@ -319,7 +321,7 @@ void _wrap_Swig_free_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(void *_swig_go_0) {
 }
 
 
-std::map< std::string,std::string > *_wrap_new_MapStringString__SWIG_0_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8() {
+std::map< std::string,std::string > *_wrap_new_MapStringString__SWIG_0_FiftyOneDegreesPatternV3_273bde300a844605() {
   std::map< std::string,std::string > *result = 0 ;
   std::map< std::string,std::string > *_swig_go_result;
   
@@ -340,7 +342,7 @@ std::map< std::string,std::string > *_wrap_new_MapStringString__SWIG_0_FiftyOneD
 }
 
 
-std::map< std::string,std::string > *_wrap_new_MapStringString__SWIG_1_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::map< std::string,std::string > *_swig_go_0) {
+std::map< std::string,std::string > *_wrap_new_MapStringString__SWIG_1_FiftyOneDegreesPatternV3_273bde300a844605(std::map< std::string,std::string > *_swig_go_0) {
   std::map< std::string,std::string > *arg1 = 0 ;
   std::map< std::string,std::string > *result = 0 ;
   std::map< std::string,std::string > *_swig_go_result;
@@ -363,7 +365,7 @@ std::map< std::string,std::string > *_wrap_new_MapStringString__SWIG_1_FiftyOneD
 }
 
 
-intgo _wrap_MapStringString_size_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::map< std::string,std::string > *_swig_go_0) {
+intgo _wrap_MapStringString_size_FiftyOneDegreesPatternV3_273bde300a844605(std::map< std::string,std::string > *_swig_go_0) {
   std::map< std::string,std::string > *arg1 = (std::map< std::string,std::string > *) 0 ;
   unsigned int result;
   intgo _swig_go_result;
@@ -386,7 +388,7 @@ intgo _wrap_MapStringString_size_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::map
 }
 
 
-bool _wrap_MapStringString_empty_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::map< std::string,std::string > *_swig_go_0) {
+bool _wrap_MapStringString_empty_FiftyOneDegreesPatternV3_273bde300a844605(std::map< std::string,std::string > *_swig_go_0) {
   std::map< std::string,std::string > *arg1 = (std::map< std::string,std::string > *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -409,7 +411,7 @@ bool _wrap_MapStringString_empty_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::map
 }
 
 
-void _wrap_MapStringString_clear_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::map< std::string,std::string > *_swig_go_0) {
+void _wrap_MapStringString_clear_FiftyOneDegreesPatternV3_273bde300a844605(std::map< std::string,std::string > *_swig_go_0) {
   std::map< std::string,std::string > *arg1 = (std::map< std::string,std::string > *) 0 ;
   
   arg1 = *(std::map< std::string,std::string > **)&_swig_go_0; 
@@ -429,7 +431,7 @@ void _wrap_MapStringString_clear_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::map
 }
 
 
-_gostring_ _wrap_MapStringString_get_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::map< std::string,std::string > *_swig_go_0, _gostring_ _swig_go_1) {
+_gostring_ _wrap_MapStringString_get_FiftyOneDegreesPatternV3_273bde300a844605(std::map< std::string,std::string > *_swig_go_0, _gostring_ _swig_go_1) {
   std::map< std::string,std::string > *arg1 = (std::map< std::string,std::string > *) 0 ;
   std::string *arg2 = 0 ;
   std::string *result = 0 ;
@@ -463,7 +465,7 @@ _gostring_ _wrap_MapStringString_get_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std:
 }
 
 
-void _wrap_MapStringString_set_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::map< std::string,std::string > *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
+void _wrap_MapStringString_set_FiftyOneDegreesPatternV3_273bde300a844605(std::map< std::string,std::string > *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
   std::map< std::string,std::string > *arg1 = (std::map< std::string,std::string > *) 0 ;
   std::string *arg2 = 0 ;
   std::string *arg3 = 0 ;
@@ -493,7 +495,7 @@ void _wrap_MapStringString_set_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::map< 
 }
 
 
-void _wrap_MapStringString_del_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::map< std::string,std::string > *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_MapStringString_del_FiftyOneDegreesPatternV3_273bde300a844605(std::map< std::string,std::string > *_swig_go_0, _gostring_ _swig_go_1) {
   std::map< std::string,std::string > *arg1 = (std::map< std::string,std::string > *) 0 ;
   std::string *arg2 = 0 ;
   
@@ -524,7 +526,7 @@ void _wrap_MapStringString_del_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::map< 
 }
 
 
-bool _wrap_MapStringString_has_key_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::map< std::string,std::string > *_swig_go_0, _gostring_ _swig_go_1) {
+bool _wrap_MapStringString_has_key_FiftyOneDegreesPatternV3_273bde300a844605(std::map< std::string,std::string > *_swig_go_0, _gostring_ _swig_go_1) {
   std::map< std::string,std::string > *arg1 = (std::map< std::string,std::string > *) 0 ;
   std::string *arg2 = 0 ;
   bool result;
@@ -552,7 +554,7 @@ bool _wrap_MapStringString_has_key_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::m
 }
 
 
-void _wrap_delete_MapStringString_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::map< std::string,std::string > *_swig_go_0) {
+void _wrap_delete_MapStringString_FiftyOneDegreesPatternV3_273bde300a844605(std::map< std::string,std::string > *_swig_go_0) {
   std::map< std::string,std::string > *arg1 = (std::map< std::string,std::string > *) 0 ;
   
   arg1 = *(std::map< std::string,std::string > **)&_swig_go_0; 
@@ -572,7 +574,7 @@ void _wrap_delete_MapStringString_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::ma
 }
 
 
-std::vector< std::string > *_wrap_new_VectorString__SWIG_0_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8() {
+std::vector< std::string > *_wrap_new_VectorString__SWIG_0_FiftyOneDegreesPatternV3_273bde300a844605() {
   std::vector< std::string > *result = 0 ;
   std::vector< std::string > *_swig_go_result;
   
@@ -593,7 +595,7 @@ std::vector< std::string > *_wrap_new_VectorString__SWIG_0_FiftyOneDegreesTrieV3
 }
 
 
-std::vector< std::string > *_wrap_new_VectorString__SWIG_1_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(long long _swig_go_0) {
+std::vector< std::string > *_wrap_new_VectorString__SWIG_1_FiftyOneDegreesPatternV3_273bde300a844605(long long _swig_go_0) {
   std::vector< std::string >::size_type arg1 ;
   std::vector< std::string > *result = 0 ;
   std::vector< std::string > *_swig_go_result;
@@ -616,7 +618,7 @@ std::vector< std::string > *_wrap_new_VectorString__SWIG_1_FiftyOneDegreesTrieV3
 }
 
 
-long long _wrap_VectorString_size_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::vector< std::string > *_swig_go_0) {
+long long _wrap_VectorString_size_FiftyOneDegreesPatternV3_273bde300a844605(std::vector< std::string > *_swig_go_0) {
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
   std::vector< std::string >::size_type result;
   long long _swig_go_result;
@@ -639,7 +641,7 @@ long long _wrap_VectorString_size_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::ve
 }
 
 
-long long _wrap_VectorString_capacity_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::vector< std::string > *_swig_go_0) {
+long long _wrap_VectorString_capacity_FiftyOneDegreesPatternV3_273bde300a844605(std::vector< std::string > *_swig_go_0) {
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
   std::vector< std::string >::size_type result;
   long long _swig_go_result;
@@ -662,7 +664,7 @@ long long _wrap_VectorString_capacity_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std
 }
 
 
-void _wrap_VectorString_reserve_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::vector< std::string > *_swig_go_0, long long _swig_go_1) {
+void _wrap_VectorString_reserve_FiftyOneDegreesPatternV3_273bde300a844605(std::vector< std::string > *_swig_go_0, long long _swig_go_1) {
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
   std::vector< std::string >::size_type arg2 ;
   
@@ -684,7 +686,7 @@ void _wrap_VectorString_reserve_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::vect
 }
 
 
-bool _wrap_VectorString_isEmpty_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::vector< std::string > *_swig_go_0) {
+bool _wrap_VectorString_isEmpty_FiftyOneDegreesPatternV3_273bde300a844605(std::vector< std::string > *_swig_go_0) {
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -707,7 +709,7 @@ bool _wrap_VectorString_isEmpty_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::vect
 }
 
 
-void _wrap_VectorString_clear_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::vector< std::string > *_swig_go_0) {
+void _wrap_VectorString_clear_FiftyOneDegreesPatternV3_273bde300a844605(std::vector< std::string > *_swig_go_0) {
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
   
   arg1 = *(std::vector< std::string > **)&_swig_go_0; 
@@ -727,7 +729,7 @@ void _wrap_VectorString_clear_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::vector
 }
 
 
-void _wrap_VectorString_add_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::vector< std::string > *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_VectorString_add_FiftyOneDegreesPatternV3_273bde300a844605(std::vector< std::string > *_swig_go_0, _gostring_ _swig_go_1) {
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
   std::vector< std::string >::value_type *arg2 = 0 ;
   
@@ -752,7 +754,7 @@ void _wrap_VectorString_add_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::vector< 
 }
 
 
-_gostring_ _wrap_VectorString_get_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::vector< std::string > *_swig_go_0, intgo _swig_go_1) {
+_gostring_ _wrap_VectorString_get_FiftyOneDegreesPatternV3_273bde300a844605(std::vector< std::string > *_swig_go_0, intgo _swig_go_1) {
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
   int arg2 ;
   std::vector< std::string >::value_type *result = 0 ;
@@ -783,7 +785,7 @@ _gostring_ _wrap_VectorString_get_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::ve
 }
 
 
-void _wrap_VectorString_set_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::vector< std::string > *_swig_go_0, intgo _swig_go_1, _gostring_ _swig_go_2) {
+void _wrap_VectorString_set_FiftyOneDegreesPatternV3_273bde300a844605(std::vector< std::string > *_swig_go_0, intgo _swig_go_1, _gostring_ _swig_go_2) {
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
   int arg2 ;
   std::vector< std::string >::value_type *arg3 = 0 ;
@@ -816,7 +818,7 @@ void _wrap_VectorString_set_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::vector< 
 }
 
 
-void _wrap_delete_VectorString_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::vector< std::string > *_swig_go_0) {
+void _wrap_delete_VectorString_FiftyOneDegreesPatternV3_273bde300a844605(std::vector< std::string > *_swig_go_0) {
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
   
   arg1 = *(std::vector< std::string > **)&_swig_go_0; 
@@ -836,7 +838,7 @@ void _wrap_delete_VectorString_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(std::vecto
 }
 
 
-void _wrap_delete_Match_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Match *_swig_go_0) {
+void _wrap_delete_Match_FiftyOneDegreesPatternV3_273bde300a844605(Match *_swig_go_0) {
   Match *arg1 = (Match *) 0 ;
   
   arg1 = *(Match **)&_swig_go_0; 
@@ -856,7 +858,7 @@ void _wrap_delete_Match_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Match *_swig_go_0
 }
 
 
-std::vector< std::string > *_wrap_Match_getValues__SWIG_0_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Match *_swig_go_0, _gostring_ _swig_go_1) {
+std::vector< std::string > *_wrap_Match_getValues__SWIG_0_FiftyOneDegreesPatternV3_273bde300a844605(Match *_swig_go_0, _gostring_ _swig_go_1) {
   Match *arg1 = (Match *) 0 ;
   char *arg2 = (char *) 0 ;
   std::vector< std::string > result;
@@ -881,7 +883,7 @@ std::vector< std::string > *_wrap_Match_getValues__SWIG_0_FiftyOneDegreesTrieV3_
 }
 
 
-std::vector< std::string > *_wrap_Match_getValues__SWIG_1_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Match *_swig_go_0, std::string *_swig_go_1) {
+std::vector< std::string > *_wrap_Match_getValues__SWIG_1_FiftyOneDegreesPatternV3_273bde300a844605(Match *_swig_go_0, std::string *_swig_go_1) {
   Match *arg1 = (Match *) 0 ;
   std::string *arg2 = 0 ;
   std::vector< std::string > result;
@@ -906,7 +908,7 @@ std::vector< std::string > *_wrap_Match_getValues__SWIG_1_FiftyOneDegreesTrieV3_
 }
 
 
-std::vector< std::string > *_wrap_Match_getValues__SWIG_2_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Match *_swig_go_0, intgo _swig_go_1) {
+std::vector< std::string > *_wrap_Match_getValues__SWIG_2_FiftyOneDegreesPatternV3_273bde300a844605(Match *_swig_go_0, intgo _swig_go_1) {
   Match *arg1 = (Match *) 0 ;
   int arg2 ;
   std::vector< std::string > result;
@@ -931,7 +933,7 @@ std::vector< std::string > *_wrap_Match_getValues__SWIG_2_FiftyOneDegreesTrieV3_
 }
 
 
-_gostring_ _wrap_Match_getValue__SWIG_0_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Match *_swig_go_0, _gostring_ _swig_go_1) {
+_gostring_ _wrap_Match_getValue__SWIG_0_FiftyOneDegreesPatternV3_273bde300a844605(Match *_swig_go_0, _gostring_ _swig_go_1) {
   Match *arg1 = (Match *) 0 ;
   char *arg2 = (char *) 0 ;
   std::string result;
@@ -956,7 +958,7 @@ _gostring_ _wrap_Match_getValue__SWIG_0_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(M
 }
 
 
-_gostring_ _wrap_Match_getValue__SWIG_1_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Match *_swig_go_0, std::string *_swig_go_1) {
+_gostring_ _wrap_Match_getValue__SWIG_1_FiftyOneDegreesPatternV3_273bde300a844605(Match *_swig_go_0, std::string *_swig_go_1) {
   Match *arg1 = (Match *) 0 ;
   std::string *arg2 = 0 ;
   std::string result;
@@ -981,7 +983,7 @@ _gostring_ _wrap_Match_getValue__SWIG_1_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(M
 }
 
 
-_gostring_ _wrap_Match_getValue__SWIG_2_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Match *_swig_go_0, intgo _swig_go_1) {
+_gostring_ _wrap_Match_getValue__SWIG_2_FiftyOneDegreesPatternV3_273bde300a844605(Match *_swig_go_0, intgo _swig_go_1) {
   Match *arg1 = (Match *) 0 ;
   int arg2 ;
   std::string result;
@@ -1006,7 +1008,7 @@ _gostring_ _wrap_Match_getValue__SWIG_2_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(M
 }
 
 
-_gostring_ _wrap_Match_getDeviceId_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Match *_swig_go_0) {
+_gostring_ _wrap_Match_getDeviceId_FiftyOneDegreesPatternV3_273bde300a844605(Match *_swig_go_0) {
   Match *arg1 = (Match *) 0 ;
   std::string result;
   _gostring_ _swig_go_result;
@@ -1029,7 +1031,7 @@ _gostring_ _wrap_Match_getDeviceId_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Match 
 }
 
 
-intgo _wrap_Match_getRank_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Match *_swig_go_0) {
+intgo _wrap_Match_getRank_FiftyOneDegreesPatternV3_273bde300a844605(Match *_swig_go_0) {
   Match *arg1 = (Match *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -1052,7 +1054,7 @@ intgo _wrap_Match_getRank_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Match *_swig_go
 }
 
 
-intgo _wrap_Match_getDifference_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Match *_swig_go_0) {
+intgo _wrap_Match_getDifference_FiftyOneDegreesPatternV3_273bde300a844605(Match *_swig_go_0) {
   Match *arg1 = (Match *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -1075,7 +1077,7 @@ intgo _wrap_Match_getDifference_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Match *_s
 }
 
 
-intgo _wrap_Match_getMethod_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Match *_swig_go_0) {
+intgo _wrap_Match_getMethod_FiftyOneDegreesPatternV3_273bde300a844605(Match *_swig_go_0) {
   Match *arg1 = (Match *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -1098,7 +1100,7 @@ intgo _wrap_Match_getMethod_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Match *_swig_
 }
 
 
-_gostring_ _wrap_Match_getUserAgent_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Match *_swig_go_0) {
+_gostring_ _wrap_Match_getUserAgent_FiftyOneDegreesPatternV3_273bde300a844605(Match *_swig_go_0) {
   Match *arg1 = (Match *) 0 ;
   std::string result;
   _gostring_ _swig_go_result;
@@ -1121,7 +1123,121 @@ _gostring_ _wrap_Match_getUserAgent_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Match
 }
 
 
-Provider *_wrap_new_Provider__SWIG_0_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(_gostring_ _swig_go_0) {
+void _wrap_delete_Profiles_FiftyOneDegreesPatternV3_273bde300a844605(Profiles *_swig_go_0) {
+  Profiles *arg1 = (Profiles *) 0 ;
+  
+  arg1 = *(Profiles **)&_swig_go_0; 
+  
+  {
+    try {
+      delete arg1;;
+    }
+    catch(runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    catch(invalid_argument& e) {
+      SWIG_exception(SWIG_ValueError, e.what());
+    }
+  }
+  
+}
+
+
+Profiles *_wrap_new_Profiles_FiftyOneDegreesPatternV3_273bde300a844605() {
+  Profiles *result = 0 ;
+  Profiles *_swig_go_result;
+  
+  
+  {
+    try {
+      result = (Profiles *)new Profiles();;
+    }
+    catch(runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    catch(invalid_argument& e) {
+      SWIG_exception(SWIG_ValueError, e.what());
+    }
+  }
+  *(Profiles **)&_swig_go_result = (Profiles *)result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_Profiles_getCount_FiftyOneDegreesPatternV3_273bde300a844605(Profiles *_swig_go_0) {
+  Profiles *arg1 = (Profiles *) 0 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(Profiles **)&_swig_go_0; 
+  
+  {
+    try {
+      result = (int)(arg1)->getCount();;
+    }
+    catch(runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    catch(invalid_argument& e) {
+      SWIG_exception(SWIG_ValueError, e.what());
+    }
+  }
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_Profiles_getProfileIndex_FiftyOneDegreesPatternV3_273bde300a844605(Profiles *_swig_go_0, intgo _swig_go_1) {
+  Profiles *arg1 = (Profiles *) 0 ;
+  int arg2 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(Profiles **)&_swig_go_0; 
+  arg2 = (int)_swig_go_1; 
+  
+  {
+    try {
+      result = (int)(arg1)->getProfileIndex(arg2);;
+    }
+    catch(runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    catch(invalid_argument& e) {
+      SWIG_exception(SWIG_ValueError, e.what());
+    }
+  }
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_Profiles_getProfileId_FiftyOneDegreesPatternV3_273bde300a844605(Profiles *_swig_go_0, intgo _swig_go_1) {
+  Profiles *arg1 = (Profiles *) 0 ;
+  int arg2 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(Profiles **)&_swig_go_0; 
+  arg2 = (int)_swig_go_1; 
+  
+  {
+    try {
+      result = (int)(arg1)->getProfileId(arg2);;
+    }
+    catch(runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    catch(invalid_argument& e) {
+      SWIG_exception(SWIG_ValueError, e.what());
+    }
+  }
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+Provider *_wrap_new_Provider__SWIG_0_FiftyOneDegreesPatternV3_273bde300a844605(_gostring_ _swig_go_0) {
   std::string *arg1 = 0 ;
   Provider *result = 0 ;
   Provider *_swig_go_result;
@@ -1147,7 +1263,7 @@ Provider *_wrap_new_Provider__SWIG_0_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(_gos
 }
 
 
-Provider *_wrap_new_Provider__SWIG_1_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(_gostring_ _swig_go_0, _gostring_ _swig_go_1) {
+Provider *_wrap_new_Provider__SWIG_1_FiftyOneDegreesPatternV3_273bde300a844605(_gostring_ _swig_go_0, _gostring_ _swig_go_1) {
   std::string *arg1 = 0 ;
   std::string *arg2 = 0 ;
   Provider *result = 0 ;
@@ -1178,7 +1294,42 @@ Provider *_wrap_new_Provider__SWIG_1_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(_gos
 }
 
 
-Provider *_wrap_new_Provider__SWIG_2_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(_gostring_ _swig_go_0, std::vector< std::string > *_swig_go_1) {
+Provider *_wrap_new_Provider__SWIG_2_FiftyOneDegreesPatternV3_273bde300a844605(_gostring_ _swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2, intgo _swig_go_3) {
+  std::string *arg1 = 0 ;
+  std::string *arg2 = 0 ;
+  int arg3 ;
+  int arg4 ;
+  Provider *result = 0 ;
+  Provider *_swig_go_result;
+  
+  
+  std::string arg1_str(_swig_go_0.p, _swig_go_0.n);
+  arg1 = &arg1_str;
+  
+  
+  std::string arg2_str(_swig_go_1.p, _swig_go_1.n);
+  arg2 = &arg2_str;
+  
+  arg3 = (int)_swig_go_2; 
+  arg4 = (int)_swig_go_3; 
+  
+  {
+    try {
+      result = (Provider *)new Provider((std::string const &)*arg1,(std::string const &)*arg2,arg3,arg4);;
+    }
+    catch(runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    catch(invalid_argument& e) {
+      SWIG_exception(SWIG_ValueError, e.what());
+    }
+  }
+  *(Provider **)&_swig_go_result = (Provider *)result; 
+  return _swig_go_result;
+}
+
+
+Provider *_wrap_new_Provider__SWIG_3_FiftyOneDegreesPatternV3_273bde300a844605(_gostring_ _swig_go_0, std::vector< std::string > *_swig_go_1) {
   std::string *arg1 = 0 ;
   std::vector< std::string > *arg2 = 0 ;
   Provider *result = 0 ;
@@ -1206,7 +1357,69 @@ Provider *_wrap_new_Provider__SWIG_2_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(_gos
 }
 
 
-void _wrap_delete_Provider_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provider *_swig_go_0) {
+Provider *_wrap_new_Provider__SWIG_4_FiftyOneDegreesPatternV3_273bde300a844605(_gostring_ _swig_go_0, std::vector< std::string > *_swig_go_1, intgo _swig_go_2, intgo _swig_go_3) {
+  std::string *arg1 = 0 ;
+  std::vector< std::string > *arg2 = 0 ;
+  int arg3 ;
+  int arg4 ;
+  Provider *result = 0 ;
+  Provider *_swig_go_result;
+  
+  
+  std::string arg1_str(_swig_go_0.p, _swig_go_0.n);
+  arg1 = &arg1_str;
+  
+  arg2 = *(std::vector< std::string > **)&_swig_go_1; 
+  arg3 = (int)_swig_go_2; 
+  arg4 = (int)_swig_go_3; 
+  
+  {
+    try {
+      result = (Provider *)new Provider((std::string const &)*arg1,*arg2,arg3,arg4);;
+    }
+    catch(runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    catch(invalid_argument& e) {
+      SWIG_exception(SWIG_ValueError, e.what());
+    }
+  }
+  *(Provider **)&_swig_go_result = (Provider *)result; 
+  return _swig_go_result;
+}
+
+
+Provider *_wrap_new_Provider__SWIG_5_FiftyOneDegreesPatternV3_273bde300a844605(_gostring_ _swig_go_0, intgo _swig_go_1, intgo _swig_go_2) {
+  std::string *arg1 = 0 ;
+  int arg2 ;
+  int arg3 ;
+  Provider *result = 0 ;
+  Provider *_swig_go_result;
+  
+  
+  std::string arg1_str(_swig_go_0.p, _swig_go_0.n);
+  arg1 = &arg1_str;
+  
+  arg2 = (int)_swig_go_1; 
+  arg3 = (int)_swig_go_2; 
+  
+  {
+    try {
+      result = (Provider *)new Provider((std::string const &)*arg1,arg2,arg3);;
+    }
+    catch(runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    catch(invalid_argument& e) {
+      SWIG_exception(SWIG_ValueError, e.what());
+    }
+  }
+  *(Provider **)&_swig_go_result = (Provider *)result; 
+  return _swig_go_result;
+}
+
+
+void _wrap_delete_Provider_FiftyOneDegreesPatternV3_273bde300a844605(Provider *_swig_go_0) {
   Provider *arg1 = (Provider *) 0 ;
   
   arg1 = *(Provider **)&_swig_go_0; 
@@ -1226,7 +1439,7 @@ void _wrap_delete_Provider_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provider *_swi
 }
 
 
-std::vector< std::string > *_wrap_Provider_getHttpHeaders_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provider *_swig_go_0) {
+std::vector< std::string > *_wrap_Provider_getHttpHeaders_FiftyOneDegreesPatternV3_273bde300a844605(Provider *_swig_go_0) {
   Provider *arg1 = (Provider *) 0 ;
   std::vector< std::string > result;
   std::vector< std::string > *_swig_go_result;
@@ -1249,7 +1462,7 @@ std::vector< std::string > *_wrap_Provider_getHttpHeaders_FiftyOneDegreesTrieV3_
 }
 
 
-std::vector< std::string > *_wrap_Provider_getAvailableProperties_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provider *_swig_go_0) {
+std::vector< std::string > *_wrap_Provider_getAvailableProperties_FiftyOneDegreesPatternV3_273bde300a844605(Provider *_swig_go_0) {
   Provider *arg1 = (Provider *) 0 ;
   std::vector< std::string > result;
   std::vector< std::string > *_swig_go_result;
@@ -1272,7 +1485,7 @@ std::vector< std::string > *_wrap_Provider_getAvailableProperties_FiftyOneDegree
 }
 
 
-_gostring_ _wrap_Provider_getDataSetName_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provider *_swig_go_0) {
+_gostring_ _wrap_Provider_getDataSetName_FiftyOneDegreesPatternV3_273bde300a844605(Provider *_swig_go_0) {
   Provider *arg1 = (Provider *) 0 ;
   std::string result;
   _gostring_ _swig_go_result;
@@ -1295,7 +1508,7 @@ _gostring_ _wrap_Provider_getDataSetName_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(
 }
 
 
-_gostring_ _wrap_Provider_getDataSetFormat_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provider *_swig_go_0) {
+_gostring_ _wrap_Provider_getDataSetFormat_FiftyOneDegreesPatternV3_273bde300a844605(Provider *_swig_go_0) {
   Provider *arg1 = (Provider *) 0 ;
   std::string result;
   _gostring_ _swig_go_result;
@@ -1318,7 +1531,7 @@ _gostring_ _wrap_Provider_getDataSetFormat_FiftyOneDegreesTrieV3_7c77c1cd3a87bae
 }
 
 
-_gostring_ _wrap_Provider_getDataSetPublishedDate_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provider *_swig_go_0) {
+_gostring_ _wrap_Provider_getDataSetPublishedDate_FiftyOneDegreesPatternV3_273bde300a844605(Provider *_swig_go_0) {
   Provider *arg1 = (Provider *) 0 ;
   std::string result;
   _gostring_ _swig_go_result;
@@ -1341,7 +1554,7 @@ _gostring_ _wrap_Provider_getDataSetPublishedDate_FiftyOneDegreesTrieV3_7c77c1cd
 }
 
 
-_gostring_ _wrap_Provider_getDataSetNextUpdateDate_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provider *_swig_go_0) {
+_gostring_ _wrap_Provider_getDataSetNextUpdateDate_FiftyOneDegreesPatternV3_273bde300a844605(Provider *_swig_go_0) {
   Provider *arg1 = (Provider *) 0 ;
   std::string result;
   _gostring_ _swig_go_result;
@@ -1364,7 +1577,7 @@ _gostring_ _wrap_Provider_getDataSetNextUpdateDate_FiftyOneDegreesTrieV3_7c77c1c
 }
 
 
-intgo _wrap_Provider_getDataSetSignatureCount_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provider *_swig_go_0) {
+intgo _wrap_Provider_getDataSetSignatureCount_FiftyOneDegreesPatternV3_273bde300a844605(Provider *_swig_go_0) {
   Provider *arg1 = (Provider *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -1387,7 +1600,7 @@ intgo _wrap_Provider_getDataSetSignatureCount_FiftyOneDegreesTrieV3_7c77c1cd3a87
 }
 
 
-intgo _wrap_Provider_getDataSetDeviceCombinations_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provider *_swig_go_0) {
+intgo _wrap_Provider_getDataSetDeviceCombinations_FiftyOneDegreesPatternV3_273bde300a844605(Provider *_swig_go_0) {
   Provider *arg1 = (Provider *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -1410,7 +1623,7 @@ intgo _wrap_Provider_getDataSetDeviceCombinations_FiftyOneDegreesTrieV3_7c77c1cd
 }
 
 
-Match *_wrap_Provider_getMatch__SWIG_0_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provider *_swig_go_0, _gostring_ _swig_go_1) {
+Match *_wrap_Provider_getMatch__SWIG_0_FiftyOneDegreesPatternV3_273bde300a844605(Provider *_swig_go_0, _gostring_ _swig_go_1) {
   Provider *arg1 = (Provider *) 0 ;
   std::string *arg2 = 0 ;
   Match *result = 0 ;
@@ -1438,7 +1651,7 @@ Match *_wrap_Provider_getMatch__SWIG_0_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Pr
 }
 
 
-Match *_wrap_Provider_getMatch__SWIG_1_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provider *_swig_go_0, std::map< std::string,std::string > *_swig_go_1) {
+Match *_wrap_Provider_getMatch__SWIG_1_FiftyOneDegreesPatternV3_273bde300a844605(Provider *_swig_go_0, std::map< std::string,std::string > *_swig_go_1) {
   Provider *arg1 = (Provider *) 0 ;
   std::map< std::string,std::string > *arg2 = 0 ;
   Match *result = 0 ;
@@ -1463,68 +1676,7 @@ Match *_wrap_Provider_getMatch__SWIG_1_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Pr
 }
 
 
-Match *_wrap_Provider_getMatchWithTolerances__SWIG_0_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provider *_swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2, intgo _swig_go_3) {
-  Provider *arg1 = (Provider *) 0 ;
-  std::string *arg2 = 0 ;
-  int arg3 ;
-  int arg4 ;
-  Match *result = 0 ;
-  Match *_swig_go_result;
-  
-  arg1 = *(Provider **)&_swig_go_0; 
-  
-  std::string arg2_str(_swig_go_1.p, _swig_go_1.n);
-  arg2 = &arg2_str;
-  
-  arg3 = (int)_swig_go_2; 
-  arg4 = (int)_swig_go_3; 
-  
-  {
-    try {
-      result = (Match *)(arg1)->getMatchWithTolerances((std::string const &)*arg2,arg3,arg4);;
-    }
-    catch(runtime_error& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    catch(invalid_argument& e) {
-      SWIG_exception(SWIG_ValueError, e.what());
-    }
-  }
-  *(Match **)&_swig_go_result = (Match *)result; 
-  return _swig_go_result;
-}
-
-
-Match *_wrap_Provider_getMatchWithTolerances__SWIG_1_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provider *_swig_go_0, std::map< std::string,std::string > *_swig_go_1, intgo _swig_go_2, intgo _swig_go_3) {
-  Provider *arg1 = (Provider *) 0 ;
-  std::map< std::string,std::string > *arg2 = 0 ;
-  int arg3 ;
-  int arg4 ;
-  Match *result = 0 ;
-  Match *_swig_go_result;
-  
-  arg1 = *(Provider **)&_swig_go_0; 
-  arg2 = *(std::map< std::string,std::string > **)&_swig_go_1; 
-  arg3 = (int)_swig_go_2; 
-  arg4 = (int)_swig_go_3; 
-  
-  {
-    try {
-      result = (Match *)(arg1)->getMatchWithTolerances((std::map< std::string,std::string > const &)*arg2,arg3,arg4);;
-    }
-    catch(runtime_error& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    catch(invalid_argument& e) {
-      SWIG_exception(SWIG_ValueError, e.what());
-    }
-  }
-  *(Match **)&_swig_go_result = (Match *)result; 
-  return _swig_go_result;
-}
-
-
-_gostring_ _wrap_Provider_getMatchJson__SWIG_0_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provider *_swig_go_0, _gostring_ _swig_go_1) {
+_gostring_ _wrap_Provider_getMatchJson__SWIG_0_FiftyOneDegreesPatternV3_273bde300a844605(Provider *_swig_go_0, _gostring_ _swig_go_1) {
   Provider *arg1 = (Provider *) 0 ;
   std::string *arg2 = 0 ;
   std::string result;
@@ -1552,7 +1704,7 @@ _gostring_ _wrap_Provider_getMatchJson__SWIG_0_FiftyOneDegreesTrieV3_7c77c1cd3a8
 }
 
 
-_gostring_ _wrap_Provider_getMatchJson__SWIG_1_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provider *_swig_go_0, std::map< std::string,std::string > *_swig_go_1) {
+_gostring_ _wrap_Provider_getMatchJson__SWIG_1_FiftyOneDegreesPatternV3_273bde300a844605(Provider *_swig_go_0, std::map< std::string,std::string > *_swig_go_1) {
   Provider *arg1 = (Provider *) 0 ;
   std::map< std::string,std::string > *arg2 = 0 ;
   std::string result;
@@ -1577,16 +1729,21 @@ _gostring_ _wrap_Provider_getMatchJson__SWIG_1_FiftyOneDegreesTrieV3_7c77c1cd3a8
 }
 
 
-void _wrap_Provider_setDrift_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provider *_swig_go_0, intgo _swig_go_1) {
+Match *_wrap_Provider_getMatchForDeviceId_FiftyOneDegreesPatternV3_273bde300a844605(Provider *_swig_go_0, _gostring_ _swig_go_1) {
   Provider *arg1 = (Provider *) 0 ;
-  int arg2 ;
+  std::string *arg2 = 0 ;
+  Match *result = 0 ;
+  Match *_swig_go_result;
   
   arg1 = *(Provider **)&_swig_go_0; 
-  arg2 = (int)_swig_go_1; 
+  
+  std::string arg2_str(_swig_go_1.p, _swig_go_1.n);
+  arg2 = &arg2_str;
+  
   
   {
     try {
-      (arg1)->setDrift(arg2);;
+      result = (Match *)(arg1)->getMatchForDeviceId((std::string const &)*arg2);;
     }
     catch(runtime_error& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
@@ -1595,20 +1752,25 @@ void _wrap_Provider_setDrift_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provider *_s
       SWIG_exception(SWIG_ValueError, e.what());
     }
   }
-  
+  *(Match **)&_swig_go_result = (Match *)result; 
+  return _swig_go_result;
 }
 
 
-void _wrap_Provider_setDifference_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provider *_swig_go_0, intgo _swig_go_1) {
+Profiles *_wrap_Provider_findProfiles__SWIG_0_FiftyOneDegreesPatternV3_273bde300a844605(Provider *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
   Provider *arg1 = (Provider *) 0 ;
-  int arg2 ;
+  std::string arg2 ;
+  std::string arg3 ;
+  Profiles *result = 0 ;
+  Profiles *_swig_go_result;
   
   arg1 = *(Provider **)&_swig_go_0; 
-  arg2 = (int)_swig_go_1; 
+  (&arg2)->assign(_swig_go_1.p, _swig_go_1.n); 
+  (&arg3)->assign(_swig_go_2.p, _swig_go_2.n); 
   
   {
     try {
-      (arg1)->setDifference(arg2);;
+      result = (Profiles *)(arg1)->findProfiles(arg2,arg3);;
     }
     catch(runtime_error& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
@@ -1617,11 +1779,41 @@ void _wrap_Provider_setDifference_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provide
       SWIG_exception(SWIG_ValueError, e.what());
     }
   }
-  
+  *(Profiles **)&_swig_go_result = (Profiles *)result; 
+  return _swig_go_result;
 }
 
 
-void _wrap_Provider_reloadFromFile_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provider *_swig_go_0) {
+Profiles *_wrap_Provider_findProfiles__SWIG_1_FiftyOneDegreesPatternV3_273bde300a844605(Provider *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, Profiles *_swig_go_3) {
+  Provider *arg1 = (Provider *) 0 ;
+  std::string arg2 ;
+  std::string arg3 ;
+  Profiles *arg4 = (Profiles *) 0 ;
+  Profiles *result = 0 ;
+  Profiles *_swig_go_result;
+  
+  arg1 = *(Provider **)&_swig_go_0; 
+  (&arg2)->assign(_swig_go_1.p, _swig_go_1.n); 
+  (&arg3)->assign(_swig_go_2.p, _swig_go_2.n); 
+  arg4 = *(Profiles **)&_swig_go_3; 
+  
+  {
+    try {
+      result = (Profiles *)(arg1)->findProfiles(arg2,arg3,arg4);;
+    }
+    catch(runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    catch(invalid_argument& e) {
+      SWIG_exception(SWIG_ValueError, e.what());
+    }
+  }
+  *(Profiles **)&_swig_go_result = (Profiles *)result; 
+  return _swig_go_result;
+}
+
+
+void _wrap_Provider_reloadFromFile_FiftyOneDegreesPatternV3_273bde300a844605(Provider *_swig_go_0) {
   Provider *arg1 = (Provider *) 0 ;
   
   arg1 = *(Provider **)&_swig_go_0; 
@@ -1641,18 +1833,21 @@ void _wrap_Provider_reloadFromFile_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provid
 }
 
 
-void _wrap_Provider_reloadFromMemory_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provider *_swig_go_0, char *_swig_go_1, intgo _swig_go_2) {
+void _wrap_Provider_reloadFromMemory_FiftyOneDegreesPatternV3_273bde300a844605(Provider *_swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2) {
   Provider *arg1 = (Provider *) 0 ;
-  unsigned char *arg2 ;
+  std::string *arg2 = 0 ;
   int arg3 ;
   
   arg1 = *(Provider **)&_swig_go_0; 
-  arg2 = *(unsigned char **)&_swig_go_1; 
+  
+  std::string arg2_str(_swig_go_1.p, _swig_go_1.n);
+  arg2 = &arg2_str;
+  
   arg3 = (int)_swig_go_2; 
   
   {
     try {
-      (arg1)->reloadFromMemory(arg2,arg3);;
+      (arg1)->reloadFromMemory((std::string const &)*arg2,arg3);;
     }
     catch(runtime_error& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
@@ -1665,7 +1860,76 @@ void _wrap_Provider_reloadFromMemory_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Prov
 }
 
 
-bool _wrap_Provider_getIsThreadSafe_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provider *_swig_go_0) {
+intgo _wrap_Provider_getCacheHits_FiftyOneDegreesPatternV3_273bde300a844605(Provider *_swig_go_0) {
+  Provider *arg1 = (Provider *) 0 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(Provider **)&_swig_go_0; 
+  
+  {
+    try {
+      result = (int)(arg1)->getCacheHits();;
+    }
+    catch(runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    catch(invalid_argument& e) {
+      SWIG_exception(SWIG_ValueError, e.what());
+    }
+  }
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_Provider_getCacheMisses_FiftyOneDegreesPatternV3_273bde300a844605(Provider *_swig_go_0) {
+  Provider *arg1 = (Provider *) 0 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(Provider **)&_swig_go_0; 
+  
+  {
+    try {
+      result = (int)(arg1)->getCacheMisses();;
+    }
+    catch(runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    catch(invalid_argument& e) {
+      SWIG_exception(SWIG_ValueError, e.what());
+    }
+  }
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_Provider_getCacheMaxIterations_FiftyOneDegreesPatternV3_273bde300a844605(Provider *_swig_go_0) {
+  Provider *arg1 = (Provider *) 0 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(Provider **)&_swig_go_0; 
+  
+  {
+    try {
+      result = (int)(arg1)->getCacheMaxIterations();;
+    }
+    catch(runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    catch(invalid_argument& e) {
+      SWIG_exception(SWIG_ValueError, e.what());
+    }
+  }
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+bool _wrap_Provider_getIsThreadSafe_FiftyOneDegreesPatternV3_273bde300a844605(Provider *_swig_go_0) {
   Provider *arg1 = (Provider *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -1688,10 +1952,12 @@ bool _wrap_Provider_getIsThreadSafe_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(Provi
 }
 
 
-Provider *_wrap_new_Provider__SWIG_3_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(_gostring_ _swig_go_0, _gostring_ _swig_go_1, bool _swig_go_2) {
+Provider *_wrap_new_Provider__SWIG_6_FiftyOneDegreesPatternV3_273bde300a844605(_gostring_ _swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2, intgo _swig_go_3, bool _swig_go_4) {
   std::string *arg1 = 0 ;
   std::string *arg2 = 0 ;
-  bool arg3 ;
+  int arg3 ;
+  int arg4 ;
+  bool arg5 ;
   Provider *result = 0 ;
   Provider *_swig_go_result;
   
@@ -1703,11 +1969,13 @@ Provider *_wrap_new_Provider__SWIG_3_FiftyOneDegreesTrieV3_7c77c1cd3a87bae8(_gos
   std::string arg2_str(_swig_go_1.p, _swig_go_1.n);
   arg2 = &arg2_str;
   
-  arg3 = (bool)_swig_go_2; 
+  arg3 = (int)_swig_go_2; 
+  arg4 = (int)_swig_go_3; 
+  arg5 = (bool)_swig_go_4; 
   
   {
     try {
-      result = (Provider *)new Provider((std::string const &)*arg1,(std::string const &)*arg2,arg3);;
+      result = (Provider *)new Provider((std::string const &)*arg1,(std::string const &)*arg2,arg3,arg4,arg5);;
     }
     catch(runtime_error& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());

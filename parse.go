@@ -8,17 +8,17 @@ import (
 )
 
 func ParseDeviceInfo(data string) (*DeviceInfo, error) {
-	data = strings.Replace(data, "\n", ` `, -1)
-	data = strings.Replace(data, "\t", ` `, -1)
-	data = strings.Replace(data, "\r", ` `, -1)
-	data = strings.Replace(data, `"Kindle Fire HD 7"",`, `"Kindle Fire HD 7",`, -1)
-	data = strings.Replace(data, `"Kindle Fire HD 7" (`, `"Kindle Fire HD 7 (`, -1)
-	data = strings.Replace(data, `"PIXI 4 5"",`, `"PIXI 4 5",`, -1)
-	data = strings.Replace(data, `"Pixi 4 5"",`, `"Pixi 4 5",`, -1)
-	data = strings.Replace(data, `"eSmart 7"",`, `"eSmart 7",`, -1)
-	data = strings.Replace(data, `"Galaxy Note Pro 12.2"",`, `"Galaxy Note Pro 12.2",`, -1)
-	data = strings.Replace(data, `"Miia Tab 7"",`, `"Miia Tab 7",`, -1)
-	data = strings.Replace(data, `"MyTablet 7"",`, `"MyTablet 7",`, -1)
+	// data = strings.Replace(data, "\n", ` `, -1)
+	// data = strings.Replace(data, "\t", ` `, -1)
+	// data = strings.Replace(data, "\r", ` `, -1)
+	// data = strings.Replace(data, `"Kindle Fire HD 7"",`, `"Kindle Fire HD 7",`, -1)
+	// data = strings.Replace(data, `"Kindle Fire HD 7" (`, `"Kindle Fire HD 7 (`, -1)
+	// data = strings.Replace(data, `"PIXI 4 5"",`, `"PIXI 4 5",`, -1)
+	// data = strings.Replace(data, `"Pixi 4 5"",`, `"Pixi 4 5",`, -1)
+	// data = strings.Replace(data, `"eSmart 7"",`, `"eSmart 7",`, -1)
+	// data = strings.Replace(data, `"Galaxy Note Pro 12.2"",`, `"Galaxy Note Pro 12.2",`, -1)
+	// data = strings.Replace(data, `"Miia Tab 7"",`, `"Miia Tab 7",`, -1)
+	// data = strings.Replace(data, `"MyTablet 7"",`, `"MyTablet 7",`, -1)
 
 	json, err := simplejson.NewJson([]byte(data))
 	if err != nil {

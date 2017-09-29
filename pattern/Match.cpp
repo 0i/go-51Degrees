@@ -21,21 +21,22 @@
  * defined by the Mozilla Public License, v. 2.0.
  ********************************************************************** */
 
+#include <iostream>
 #include "Match.hpp"
 
 /**
- * Creates a new match instance for the offsets provided.
- * @param offsets for the devices the match relates to
+ * Creates a new match instance.
  */
-Match::Match(fiftyoneDegreesDeviceOffsets *offsets) {
-	this->offsets = offsets;
-}
+Match::Match() {}
 
 /**
- * Releases the memory used to store the device offsets.
+ * Releases the workset back into the pool ready for another Match instance
+ * to use.
  */
 Match::~Match() {
-	fiftyoneDegreesProviderFreeDeviceOffsets(offsets);
+    #ifndef BUILDING_NODE_EXTENSION
+    fiftyoneDegreesWorksetRelease(ws);
+    #endif
 }
 
 /**
@@ -47,19 +48,16 @@ Match::~Match() {
  * @returns a string representation of the value for the property
  */
 string Match::getValue(int requiredPropertyIndex) {
-	string result;
-	if (requiredPropertyIndex >= 0 &&
-			requiredPropertyIndex <
-			fiftyoneDegreesGetRequiredPropertiesCount(dataSet)) {
-		const char *value = fiftyoneDegreesGetValuePtrFromOffsets(
-			dataSet,
-			offsets,
-			requiredPropertyIndex);
-		if (value != NULL) {
-			result.assign(value);
-		}
-	}
-	return result;
+    string result;
+    const fiftyoneDegreesAsciiString* valueName;
+    if (requiredPropertyIndex >= 0 &&
+        fiftyoneDegreesSetValues(ws, requiredPropertyIndex) > 0) {
+        valueName = fiftyoneDegreesGetString(
+            ws->dataSet,
+            ws->values[0]->nameOffset);
+        result.assign(&(valueName->firstByte));
+    }
+    return result;
 }
 
 /**
@@ -71,7 +69,9 @@ string Match::getValue(int requiredPropertyIndex) {
  * @returns a string representation of the value for the property
  */
 string Match::getValue(const char* propertyName) {
-	return getValue(fiftyoneDegreesGetRequiredPropertyIndex(dataSet, propertyName));
+    return getValue(fiftyoneDegreesGetRequiredPropertyIndex(
+        ws->dataSet,
+        propertyName));
 }
 
 /**
@@ -83,7 +83,7 @@ string Match::getValue(const char* propertyName) {
  * @returns a string representation of the value for the property
  */
 string Match::getValue(string &propertyName) {
-	return getValue(propertyName.c_str());
+    return getValue(propertyName.c_str());
 }
 
 /**
@@ -93,30 +93,18 @@ string Match::getValue(string &propertyName) {
  * @returns a vector of values for the property
  */
 vector<string> Match::getValues(int requiredPropertyIndex) {
-	vector<string> result;
-	if (requiredPropertyIndex >= 0 &&
-		requiredPropertyIndex < fiftyoneDegreesGetRequiredPropertiesCount(dataSet)) {
-		char *start = (char*)fiftyoneDegreesGetValuePtrFromOffsets(
-			dataSet,
-			offsets,
-			requiredPropertyIndex);
-		if (start != NULL) {
-			char *current = start, *last = start;
-			while (*current != 0) {
-				if (*current == '|') {
-					result.insert(
-						result.end(),
-						string(last, current - last));
-					last = current + 1;
-				}
-				current++;
-			}
-			result.insert(
-				result.end(),
-				string(last, current - last));
-		}
-	}
-	return result;
+    vector<string> result;
+    const fiftyoneDegreesAsciiString* valueName;
+    if (requiredPropertyIndex >= 0 &&
+        fiftyoneDegreesSetValues(ws, requiredPropertyIndex) > 0) {
+        for (int valueIndex = 0; valueIndex < ws->valuesCount; valueIndex++) {
+            valueName = fiftyoneDegreesGetString(
+                ws->dataSet,
+                ws->values[valueIndex]->nameOffset);
+            result.insert(result.end(), string(&(valueName->firstByte)));
+        }
+    }
+    return result;
 }
 
 /**
@@ -125,8 +113,10 @@ vector<string> Match::getValues(int requiredPropertyIndex) {
  * @param propertyName pointer to a string containing the property name
  * @returns a vector of values for the property
  */
-vector<string> Match::getValues(const char *propertyName) {
-	return getValues(fiftyoneDegreesGetRequiredPropertyIndex(dataSet, propertyName));
+vector<string> Match::getValues(const char* propertyName) {
+    return getValues(fiftyoneDegreesGetRequiredPropertyIndex(
+        ws->dataSet,
+        propertyName));
 }
 
 /**
@@ -135,59 +125,81 @@ vector<string> Match::getValues(const char *propertyName) {
  * @param propertyName string containing the property name
  * @returns a vector of values for the property
  */
-vector<string> Match::getValues(string &propertyName) {
-	return getValues(propertyName.c_str());
+vector<string> Match::getValues(string& propertyName) {
+    return getValues(propertyName.c_str());
 }
 
 /**
  * Returns relevant parts of the User-Agent which most closely matched the
- * target User-Agent.
- * @returns string set to the HTTP header value matched
+ * target User-Agent
+ * @returns the relevant parts of the User-Agent as a string
  */
 string Match::getUserAgent() {
-	return string(offsets->firstOffset->userAgent);
+    string result;
+    char *buffer = new char[ws->dataSet->header.maxUserAgentLength];
+    fiftyoneDegreesGetSignatureAsString(
+        ws,
+        buffer,
+        ws->dataSet->header.maxUserAgentLength);
+    result.assign(buffer);
+    delete buffer;
+    return result;
 }
 
 /**
  * Returns the unique device ID if the Id property was included in the required
  * list of properties when the Provider was constructed.
+ * @returns the device ID as a string
  */
 string Match::getDeviceId() {
-	return getValue("Id");
+    string result;
+    int bufferSize = ws->dataSet->header.components.count * 10;
+    char *buffer = new char[bufferSize];
+    fiftyoneDegreesGetDeviceId(ws, buffer, bufferSize);
+    result.assign(buffer);
+    delete buffer;
+    return result;
 }
 
 /**
  * Returns the Rank of the signature found.
- * TODO - add rank data to the Trie data set
+ * See 
+ * <a href="https://51degrees.com/support/documentation/pattern"
+ * target="_parent">https://51degrees.com/support/documentation/pattern</a>
+ * for more details.
+ * @returns the Rank of the signature found as a string
  */
 int Match::getRank() {
-	return 0;
+    return fiftyoneDegreesGetSignatureRank(ws);
 }
 
 /**
  * Returns the difference between the result returned and the target
- * User-Agent
+ * User-Agent.
+ * See <a href="https://51degrees.com/support/documentation/pattern"
+ * target="_parent">https://51degrees.com/support/documentation/pattern</a>
+ * for more details.
+ * @returns the difference as an integer
  */
 int Match::getDifference() {
-	int difference = 0;
-	for (int offsetIndex = 0; offsetIndex < offsets->size; offsetIndex++) {
-		difference += offsets->firstOffset[offsetIndex].difference;
-	}
-	return difference;
+    return ws->difference;
 }
 
 /**
- * Returns the method used to determine the match result. Always 0 as Trie
- * only has one method available.
+ * Returns the method used to determine the match result.
+ * See 
+ * <a href="https://51degrees.com/support/documentation/pattern"
+ * target="_parent">https://51degrees.com/support/documentation/pattern</a>
+ * for more details.
+ * @returns the method used as an integer
  */
 int Match::getMethod() {
-	return 0;
+    return ws->method;
 }
 
 /**
  * Manual dispose method for node.
- * Depricated: match object is now freed by the garbage collector in
- * all languages, so this does nothing.
  */
 void Match::close() {
+    fiftyoneDegreesWorksetRelease(ws);
 }

@@ -26,52 +26,29 @@
 #include <map>
 #include "51Degrees.h"
 
-#ifndef FIFTYONEDEGREESMATCH_HPP
-#define FIFTYONEDEGREESMATCH_HPP
-
-using namespace std;
+#ifndef FIFTYONEDEGREESPROFILES_HPP
+#define FIFTYONEDEGREESPROFILES_HPP
 
 /**
- * Encapsulates the results of device detection for given target HTTP headers.
- * The class is constructed using an instance of device offsets which are then
- * referenced to return associated values and metrics. The memory used by the
- * offsets is released when the instance is destroyed.
- *
- * Match instances can only be created by a Provider.
- *
- * The Match class interface is compaitable with the class of the same name
- * by the Trie project.
+ * Encapsulates the profiles structure returned from the
+ * findProfiles function.
  */
-class Match {
+using namespace std;
+class Profiles {
 	friend class Provider;
 
 public:
-	Match(fiftyoneDegreesDeviceOffsets *offsets);
-	virtual ~Match();
+	Profiles();
+	virtual ~Profiles();
 
-	vector<string> getValues(const char *propertyName);
-	vector<string> getValues(string &propertyName);
-	vector<string> getValues(int requiredPropertyIndex);
-
-	string getValue(const char *propertyName);
-	string getValue(string &propertyName);
-	string getValue(int requiredPropertyIndex);
-
-	string getDeviceId();
-	int getRank();
-	int getDifference();
-	int getMethod();
-	string getUserAgent();
-    
-    // Manual dispose method for node.
-    void close();
+	int getCount();
+	int getProfileIndex(int index);
+	int getProfileId(int index);
 
 protected:
 
 private:
-	fiftyoneDegreesDataSet *dataSet;
-	fiftyoneDegreesDeviceOffsets *offsets;
-	string userAgent;
+	fiftyoneDegreesProfilesStruct *profiles;
 };
 
-#endif // FIFTYONEDEGREESMATCH_HPP
+#endif // FIFTYONEDEGREESPROFILES_HPP
