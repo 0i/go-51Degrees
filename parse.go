@@ -1,16 +1,20 @@
 package fiftyoneDegrees
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 
-	"github.com/bitly/go-simplejson"
+	"github.com/tidwall/gjson"
 )
 
 func ParseDeviceInfo(data string) (*DeviceInfo, error) {
 	// data = strings.Replace(data, "\n", ` `, -1)
 	// data = strings.Replace(data, "\t", ` `, -1)
 	// data = strings.Replace(data, "\r", ` `, -1)
+	// data = strings.Replace(data, `\n`, `\\n`, -1)
+	// data = strings.Replace(data, `\t`, `\\t`, -1)
+	// data = strings.Replace(data, `\r`, `\\r`, -1)
 	// data = strings.Replace(data, `"Kindle Fire HD 7"",`, `"Kindle Fire HD 7",`, -1)
 	// data = strings.Replace(data, `"Kindle Fire HD 7" (`, `"Kindle Fire HD 7 (`, -1)
 	// data = strings.Replace(data, `"PIXI 4 5"",`, `"PIXI 4 5",`, -1)
@@ -20,77 +24,78 @@ func ParseDeviceInfo(data string) (*DeviceInfo, error) {
 	// data = strings.Replace(data, `"Miia Tab 7"",`, `"Miia Tab 7",`, -1)
 	// data = strings.Replace(data, `"MyTablet 7"",`, `"MyTablet 7",`, -1)
 
-	json, err := simplejson.NewJson([]byte(data))
-	if err != nil {
-		return nil, err
+	res := gjson.Parse(data)
+	if res.Get("Id").String() == "" {
+		return nil, fmt.Errorf("Can not parse json")
 	}
 
 	deviceInfo := &DeviceInfo{}
-	if v, err := json.Get("DeviceType").String(); err == nil {
+
+	if v := res.Get("DeviceType").String(); v != "" {
 		deviceInfo.DeviceType = parseString(v)
 	}
 
-	if v, err := json.Get("HardwareName").String(); err == nil {
+	if v := res.Get("HardwareName").String(); v != "" {
 		deviceInfo.HardwareName = parseString(v)
 	}
 
-	if v, err := json.Get("HardwareVendor").String(); err == nil {
+	if v := res.Get("HardwareVendor").String(); v != "" {
 		deviceInfo.HardwareVendor = parseString(v)
 	}
 
-	if v, err := json.Get("HardwareModel").String(); err == nil {
+	if v := res.Get("HardwareModel").String(); v != "" {
 		deviceInfo.HardwareModel = parseString(v)
 	}
 
-	if v, err := json.Get("BrowserName").String(); err == nil {
+	if v := res.Get("BrowserName").String(); v != "" {
 		deviceInfo.BrowserName = parseString(v)
 	}
 
-	if v, err := json.Get("BrowserVersion").String(); err == nil {
+	if v := res.Get("BrowserVersion").String(); v != "" {
 		deviceInfo.BrowserVersion = parseString(v)
 	}
 
-	if v, err := json.Get("BrowserVendor").String(); err == nil {
+	if v := res.Get("BrowserVendor").String(); v != "" {
 		deviceInfo.BrowserVendor = parseString(v)
 	}
 
-	if v, err := json.Get("PlatformName").String(); err == nil {
+	if v := res.Get("PlatformName").String(); v != "" {
 		deviceInfo.PlatformName = parseString(v)
 	}
 
-	if v, err := json.Get("PlatformVersion").String(); err == nil {
+	if v := res.Get("PlatformVersion").String(); v != "" {
 		deviceInfo.PlatformVersion = parseString(v)
 	}
 
-	if v, err := json.Get("PlatformVendor").String(); err == nil {
+	if v := res.Get("PlatformVendor").String(); v != "" {
 		deviceInfo.PlatformVendor = parseString(v)
 	}
 
-	if v, err := json.Get("ScreenPixelsWidth").String(); err == nil {
+	if v := res.Get("ScreenPixelsWidth").String(); v != "" {
 		deviceInfo.ScreenPixelsWidth = parseUint16(v)
 	}
 
-	if v, err := json.Get("ScreenPixelsHeight").String(); err == nil {
+	if v := res.Get("ScreenPixelsHeight").String(); v != "" {
 		deviceInfo.ScreenPixelsHeight = parseUint16(v)
 	}
 
-	if v, err := json.Get("CPU").String(); err == nil {
+	if v := res.Get("CPU").String(); v != "" {
 		deviceInfo.CPU = parseString(v)
 	}
 
-	if v, err := json.Get("CPUCores").String(); err == nil {
+	if v := res.Get("CPUCores").String(); v != "" {
 		deviceInfo.CPUCores = parseUint8(v)
 	}
 
-	if v, err := json.Get("DeviceRAM").String(); err == nil {
+	if v := res.Get("DeviceRAM").String(); v != "" {
 		deviceInfo.DeviceRAM = parseUint16(v)
 	}
 
-	if v, err := json.Get("IsCrawler").String(); err == nil {
+	if v := res.Get("IsCrawler").String(); v != "" {
 		deviceInfo.IsCrawler = parseBool(v)
 	}
 
-	if v, err := json.Get("PriceBand").String(); err == nil {
+	if v := res.Get("PriceBand").String(); v != "" {
 		deviceInfo.PriceBand = parsePriceBand(v)
 	}
 
